@@ -73,7 +73,6 @@ const[listofRestaruants,setListofRestaruants] = useState(
 // console.log('hello world');
 //Filter logic
 const filteredList = listofRestaruants.filter((res)=>res.data.avgRating>4);
-console.log(listofRestaruants);
 
 setListofRestaruants(filteredList);
    }}>Top Rated Restaurant</button>

@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+ Notes of the namsate react js
+ <script>
+     const heading =    document.createElement("h1");
+     heading.innerHTML = "Hello world";
+     const root = document.getElementById("root");
+     root.appendChild(heading);``
+    </script>
+    const heading  =  React.createElement("h1",{id:"heading"},"Hello world from react");
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+~version “Approximately equivalent to version”, will update you to all future patch versions, without incrementing the minor version. ~1.2.3 will use releases from 1.2.3 to <1.3.0.
 
-## Available Scripts
+^version “Compatible with version”, will update you to all future minor/patch versions, without incrementing the major version. ^1.2.3 will use releases from 1.2.3 to <2.0.0.
 
-In the project directory, you can run:
+#parcel
+-dev build
+-local server
+-HMR = hot Module replacement -refresh karna tha
+-File watching algorthim - written in c++
+-catching fasting the build -next build in faster
+-Image optimization
+-Minification
+-Bunding or bundler
+-Compressing your file
+-Consistent hashing
+-Code spliting
+-differential bundling -to support  older versions of the browser
+-Diagonstic  = beautifull diagonstic of the errors
+-Error handling
+-SSL feature also provided
+-Tree shaking algorthim -remove the unused code for you.
+-different dev and prod buildes
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Caret is used and tidle
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Example of react
+// const heading  =  React.createElement("h1",{id:"heading"},"Hello world from react");
+import  React from "react";
+import ReactDOM from "react-dom/client";
+const parent = React.createElement("div",{id:"parent"},
+[React.createElement("div",{id:"child"},[React.createElement( "h1",{},"This is a namsate react "),
+React.createElement( "h1",{},"I am a h2 tag")
+]
+)],
+[React.createElement("div",{id:"child2"},[React.createElement( "h1",{},"I am a h1 tag"),
+React.createElement( "h1",{},"I am a h2 tag")
+]
+)]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(parent);
 
-### `npm run build`
+Example of the react js
+const heading  = React.createElement("h1",{id:"heading"},"Hello from namsate react course");
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+node module is a databses
+Package json and package lock json keeps track exact track of the version
+Parcel is dependent on all the depencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+// const heading  =  React.createElement("h1",{id:"heading"},"Hello world from react");
+import  React from "react";
+import ReactDOM from "react-dom/client";
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+//React.createElement = >ReactElement-JS Object =>HTMLElement(render)
+//JSX is not html in JS
+//JSX HTML- like syntax or XL-syntax
+//JSX(Transplied before it goes to JS Engine) -Parcel -Babel
+//Babel covert the code that react will understand
+//JSX =>Babel transplies it to=>React.createElement = >ReactElement-JS Object =>HTMLElement(render)
+//babel converting the JSX into React create Element   
+//babel is a javascript compiler 
+//babel transplied into e6 features for e6 features
+// const jsxHeading = <h1 id="heading"  className="head">Namsate from react js using jsx</h1>;
+//React element
+const   title = (
+    <div>
+<h1 id="heading"  className="head">Namsate react by using using jsx
+</h1>
+<h2>
+    Test two
+</h2>
+</div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+);
+//React component
+//Two types of the component
+//Class component
+//Functional component
+//Component compositions
+const numbers = 10000;
+const HeadingComponent = ()=>{
+return <div className="container">
+    <h1>Namsate React functional component</h1>
+   {title}
+    </div>
+};
+const HeadingComponent2 = () =><h1 className="heading">Namsate React functional component</h1>;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(< HeadingComponent/>);
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+React is a fast due to effective dom mapluation because the virtual dom
+Virtual dom tags javascipt reperenattion
+Diff algorthim
 
-### Code Splitting
+const arr = useState(resList);
+Array destruction
+Array on fly
+const listOfArr = arr[0];
+const setListArrRest= arr[1];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Monolith All code the api ui db connection  auhtenication  sms in  smae project
+Micro services Different  articheture
+Separate project br ui  auht sm authenication is called as
+Separation of concerns
+Single responsobiltiy 
+Different services are talk to each other
+UI MICROSERVICE  you can different tech stacks
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
