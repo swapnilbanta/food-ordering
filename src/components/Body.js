@@ -1,70 +1,56 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+import { useState} from "react";
 import RestaurantCard from "./RestaurantCard";
-import resList from "../utils/mockData";
 const Body = ()=>{
 
   //  state varaiable -  Super powerfull varaiable
 const[listofRestaruants,setListofRestaruants] = useState(
- resList
+ []
 );
 
+
+
+useEffect(()=>{
+getRestaurants();
+},[]);
+async function getRestaurants() {
+  // handle the error using try... catch
+  try {
+    const response = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
+    const json = await response.json();
+
+    // initialize checkJsonData() function to check Swiggy Restaurant data
+    async function checkJsonData(jsonData) {
+      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+
+        // initialize checkData for Swiggy Restaurant data
+        let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+        // if checkData is not undefined then return it
+        if (checkData !== undefined) {
+          return checkData;
+        }
+      }
+    }
+
+    // call the checkJsonData() function which return Swiggy Restaurant data
+    const resData = await checkJsonData(json);
+
+  
+
+    // update the state variable restaurants with Swiggy API data
+    setListofRestaruants(resData);
+    // setFilteredRestaurants(resData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+if(listofRestaruants.length === 0){
+  return <h1>Loading ....</h1>
+}
 //Normal js variable
 // let listofRestaruants = [];
-
-
-  //Normal Js varaiable
-    let listofRestaruantsJs = [ 
-        {
-        "data": {
-          "id": "684427",
-          "name": "Cafe Amudham",
-          "totalRatingsString": "100+ ratings",
-          "cloudinaryImageId": "0bcdca61f3cd1e9135b98328593d044f",
-          "cuisines": [
-            "South Indian",
-            "Snacks"
-          ],
-          "costForTwo": 40000,
-          "deliveryTime": 29,
-          "avgRating": "4.5",
-        },    
-      },
-      {
-        "data": {
-          "id": "684427",
-          "name": "KFC",
-          "totalRatingsString": "100+ ratings",
-          "cloudinaryImageId": "0bcdca61f3cd1e9135b98328593d044f",
-          "cuisines": [
-            "South Indian",
-            "Snacks"
-          ],
-          "costForTwo": 40000,
-          "deliveryTime": 29,
-          "avgRating": "3",
-        },    
-      },
-      {
-        "data": {
-          "id": "334477",
-          "name": "MCD",
-          "totalRatingsString": "100+ ratings",
-          "cloudinaryImageId": "0bcdca61f3cd1e9135b98328593d044f",
-          "cuisines": [
-            "South Indian",
-            "Snacks"
-          ],
-          "costForTwo": 40000,
-          "deliveryTime": 29,
-          "avgRating": "4.1",
-        },    
-      }
-    ];
-
-    let list = [];
-
-    list = ['swapnil'];
     return (
         <>
 <div  className="body">
@@ -72,7 +58,7 @@ const[listofRestaruants,setListofRestaruants] = useState(
    <button className="filter-btn" onClick={()=>{
 // console.log('hello world');
 //Filter logic
-const filteredList = listofRestaruants.filter((res)=>res.data.avgRating>4);
+const filteredList = listofRestaruants.filter((restaurant)=>restaurant.info.avgRating>4);
 
 setListofRestaruants(filteredList);
    }}>Top Rated Restaurant</button>
@@ -80,7 +66,10 @@ setListofRestaruants(filteredList);
 <div className="res-container">
 {
     listofRestaruants.map(
-       (restaruant) =><RestaurantCard key={restaruant.data.id} resData ={ restaruant}/>
+       (restaurant) =>
+      //  console.log(restaruant)
+       
+       <RestaurantCard  key={restaurant?.info?.id} {...restaurant?.info}/>
     )
 }
 

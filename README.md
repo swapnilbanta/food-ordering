@@ -114,6 +114,11 @@ React is a fast due to effective dom mapluation because the virtual dom
 Virtual dom tags javascipt reperenattion
 Diff algorthim
 
+Render cycle is fast.
+
+
+
+
 const arr = useState(resList);
 Array destruction
 Array on fly
@@ -128,3 +133,27 @@ Single responsobiltiy
 Different services are talk to each other
 UI MICROSERVICE  you can different tech stacks
 
+
+Loads ->API -> Render
+        500ms
+
+Loads->Render-> API => Render
+
+UseEffect hook 
+Hook is a normal  javascript functions
+It has use specific  function 
+
+Useffect is a normal function 
+Two arguments
+arrow function callback function
+
+render cycle is finshed 
+Then call the callback function is called
+Deepoedncy array
+
+CROSS policy  Through  youtube read karna hai
+
+//Optionally chaining 
+
+Shimer Ui
+We load the fake page until showing
