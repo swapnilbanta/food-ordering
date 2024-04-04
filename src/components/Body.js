@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useState} from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 const Body = ()=>{
 
   //  state varaiable -  Super powerfull varaiable
 const[listofRestaruants,setListofRestaruants] = useState(
  []
 );
-
-
+const[filterListRestaruant,setListFilterRestaruant] = useState([]);
+const[searchText,setSearchText ] = useState("");
 
 useEffect(()=>{
 getRestaurants();
@@ -25,7 +26,6 @@ async function getRestaurants() {
 
         // initialize checkData for Swiggy Restaurant data
         let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
         // if checkData is not undefined then return it
         if (checkData !== undefined) {
           return checkData;
@@ -40,21 +40,36 @@ async function getRestaurants() {
 
     // update the state variable restaurants with Swiggy API data
     setListofRestaruants(resData);
+    setListFilterRestaruant(resData);
     // setFilteredRestaurants(resData);
   } catch (error) {
     console.log(error);
   }
 }
 
-if(listofRestaruants.length === 0){
-  return <h1>Loading ....</h1>
-}
+
 //Normal js variable
 // let listofRestaruants = [];
-    return (
+    return listofRestaruants.length === 0 ?  <Shimmer/> : (
         <>
 <div  className="body">
 <div className="filter">
+  <div className="Search">
+    <input type="search"  className="search-box" value={searchText}
+    onChange={(e)=>{
+      setSearchText(e.target.value);
+    }}
+    />
+    <button onClick={()=>{
+      //Filter the restaruant card and Update the UI
+const fliterRestaruant = listofRestaruants.filter((restaurant)=>
+  restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+
+ );
+
+ setListFilterRestaruant(fliterRestaruant);
+    }}>Search</button>
+  </div>
    <button className="filter-btn" onClick={()=>{
 // console.log('hello world');
 //Filter logic
@@ -65,7 +80,7 @@ setListofRestaruants(filteredList);
 </div>
 <div className="res-container">
 {
-    listofRestaruants.map(
+    filterListRestaruant.map(
        (restaurant) =>
       //  console.log(restaruant)
        

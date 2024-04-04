@@ -157,3 +157,39 @@ CROSS policy  Through  youtube read karna hai
 
 Shimer Ui
 We load the fake page until showing
+//Condition rendering
+rendering based on the  rendering
+
+whenever the state varaiable changes Render the header component
+All update values are there.It will different old virtual and new virtual DOM. Differential algorthim are there.
+Reconalition alogorthim trigger again 
+Why react is fast.
+
+Local state variable changes
+React is rendered
+
+whenver state variable variables udate , react triggers a
+Reconciliation, cycle (re rendering the components) take place 
+virtual object reprenstation jsx
+React fiber 
+Reconciliation, in the context of React, is the process of determining how to update the Document Object Model (DOM) to match the most recent state of a React component.
+Config driven UI
+Gives you data for different locations
+useEffect (()=>{
+},[])
+Useffect has two arguments 
+first callback functions.
+second dependncy array.
+
+use effect is called everytime after every render of the compoenent
+
+use effect without dependcy array it will render everytime when the
+component rendered.
+//if no depency array => useeffect is called on every render
+//if dependcy array is empty [] = > useEffect is called on 
+inital render(just once)
+
+// useEffect(()=>{
+console.log("useffect is calling");
+    },[btnName]);
+    if dependency  array is [btnName] => called everytime btnName is upadted 

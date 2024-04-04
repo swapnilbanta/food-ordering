@@ -1,7 +1,14 @@
 import React from "react";
+import { useState ,useEffect} from "react";
 import { LOGO_URL } from "../utils/constants";
 
 export const Header = ()=>{
+    const[btnName,upDateBtnName] = useState("Login");
+    console.log("header");
+    useEffect(()=>{
+console.log("useffect is calling");
+    },[btnName]);
+   
     return (
 <div className="header">
 <div  className="logo-header">
@@ -13,6 +20,9 @@ export const Header = ()=>{
     <li>About</li>
     <li>Contact Us</li>
     <li>Cart</li>
+    <button className="login" onClick={()=>{
+       btnName === "Login" ? upDateBtnName("Logout") : upDateBtnName("Login")
+    }}>{btnName}</button>
     </ul>
 </div>
  </div>
