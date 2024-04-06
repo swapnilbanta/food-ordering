@@ -197,3 +197,11 @@ console.log("useffect is calling");
     Hook is function at end
 
 React router dom give access important hook useRouteError
+Outlet will filled with children according to path what page we are
+is a tunnel all the chidren goes into it.
+Super react give Link from react-route-dom
+
+Two types of routing in web app
+client side routing
+Compoent are getting changed
+Server side routing
