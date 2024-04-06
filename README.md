@@ -193,3 +193,7 @@ inital render(just once)
 console.log("useffect is calling");
     },[btnName]);
     if dependency  array is [btnName] => called everytime btnName is upadted 
+
+    Hook is function at end
+
+React router dom give access important hook useRouteError
