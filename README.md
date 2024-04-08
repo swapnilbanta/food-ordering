@@ -205,3 +205,6 @@ Two types of routing in web app
 client side routing
 Compoent are getting changed
 Server side routing
+
+Dynamic routing 
+
