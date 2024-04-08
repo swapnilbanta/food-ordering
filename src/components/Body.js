@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState} from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = ()=>{
 
   //  state varaiable -  Super powerfull varaiable
@@ -84,7 +85,7 @@ setListofRestaruants(filteredList);
        (restaurant) =>
       //  console.log(restaruant)
        
-       <RestaurantCard  key={restaurant?.info?.id} {...restaurant?.info}/>
+     <Link   key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>  <RestaurantCard {...restaurant?.info}/></Link>
     )
 }
 

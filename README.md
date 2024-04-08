@@ -208,3 +208,5 @@ Server side routing
 
 Dynamic routing 
 
+Link is a component which given by react router dom
+Behind seens the link using a anchor tag
