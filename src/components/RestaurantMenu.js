@@ -50,7 +50,6 @@ const data = await fetch(MENU_API+resId);
 if(resInfo===null) {
 return <Shimmer/>;
 } 
-console.log(resInfoCard);
 
 const {name,cuisines,costForTwoMessage  } = resInfo;
   return  (

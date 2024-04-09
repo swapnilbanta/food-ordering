@@ -1,4 +1,4 @@
- Notes of the namsate react js
+ Notes for the namsate react js
  <script>
      const heading =    document.createElement("h1");
      heading.innerHTML = "Hello world";
@@ -210,3 +210,16 @@ Dynamic routing
 
 Link is a component which given by react router dom
 Behind seens the link using a anchor tag
+
+Functional component is a function which return some jsx
+Class based component it is normal class 
+rednder() return some jsx
+The purpose of using the super constructor with a props argument is to allow a component to inherit the properties of its parent component and also pass in additional properties as arguments to the component.
+Loading the class based component  you are creating the instance of the class
+
+componentDidMount
+It is used for  making the api calling
+Why we are using for compoentDidMount for api call
+Quiclky render the compoent then making  the api call
+
+
