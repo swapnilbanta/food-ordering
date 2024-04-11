@@ -16,7 +16,7 @@ const RestaurantCard = ({
           <img 
           className="res-logo"
           alt="res-logo"
-          src={ CDN_URL+ cloudinaryImageId}/>
+          src={CDN_URL+ cloudinaryImageId }/>
   
   <h3>{name}</h3>
   <h3>{cuisines.join(",")}</h3>

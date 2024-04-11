@@ -83,7 +83,7 @@ setListofRestaruants(filteredList);
 {
     filterListRestaruant.map(
        (restaurant) =>
-      //  console.log(restaruant)
+      //  console.log(restaurant)
        
      <Link   key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>  <RestaurantCard {...restaurant?.info}/></Link>
     )

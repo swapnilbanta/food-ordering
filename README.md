@@ -222,4 +222,62 @@ It is used for  making the api calling
 Why we are using for compoentDidMount for api call
 Quiclky render the compoent then making  the api call
 
+Life cycle of react js
+Parent constructor
+Parent render
+
+Chidren one constructor
+chidren one render
+
+chidren two constructor
+children two constructor 
+Batch process are done
+batch process for children for 
+DOM manilpution very expensive
+-DOM Updated in single batch
+commit 
+chidren one componentDidMount()
+chidlren two componentDidMount()
+parent  componentDidMount()
+
+/***
+*Constructor(dummy)
+*Render (dummy)
+*<Html>  (dummy)
+*Component Did Mount
+*<API CALL>
+*this.setState
+*Mounting state is finshed
+*
+*--Update
+*render(API DATA)
+*HTML (NEW API DATA)
+*
+*componentDidUpdate()
+*
+*
+***/
+
+useEffect(()=>{
+})  after every rendered when the component is update
+
+useEffect(()=>{
+
+},[]) It will call only once when the compenet is renderd
+
+useEffect(()=>{
+
+},[count])
+Everytime the count upadate the useffect is called
+
+single responsibility principle
+
+When you are testing this small the compoenents
+Distrubting your code into smaller peices 
+smaller components
+-Modular
+-Tesable
+
+Hook Uility function normal function which return some jsx
+
 
