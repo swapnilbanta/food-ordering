@@ -280,4 +280,34 @@ smaller components
 
 Hook Uility function normal function which return some jsx
 
+useEffect(()=>{
+
+    },[]);
+    It will be excuted only once
+
+    Small bundling is known as chunking
+    // code spliting
+    //dynamic budling
+    //on demand laoding
+    //smaller logic chunks
+    //lazy laoding
+    //on demand loading
+    when the bundle size is increased we used
+    the
+    // code spliting
+    //dynamic budling
+    //on demand laoding
+    //smaller logic chunks
+    //lazy laoding
+
+    lazy is a function given by react js
+
+
+How to readuce the bundle size  of the react js 
+//chunking
+//Code spliting 
+//Dynmaic Budling
+//Lazy laoding
+//on demand laoding
+//dynamic import
 

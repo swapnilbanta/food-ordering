@@ -3,6 +3,7 @@ import { useState} from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = ()=>{
 
   //  state varaiable -  Super powerfull varaiable
@@ -48,7 +49,11 @@ async function getRestaurants() {
   }
 }
 
+const onlineStatus =useOnlineStatus();
+if(onlineStatus=== false){
+  return( <h1>Looks like your offline! Please check your interent</h1>);
 
+}
 //Normal js variable
 // let listofRestaruants = [];
     return listofRestaruants.length === 0 ?  <Shimmer/> : (
