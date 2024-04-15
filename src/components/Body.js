@@ -59,14 +59,16 @@ if(onlineStatus=== false){
     return listofRestaruants.length === 0 ?  <Shimmer/> : (
         <>
 <div  className="body">
-<div className="filter">
-  <div className="Search">
-    <input type="search"  className="search-box" value={searchText}
+<div className="filter flex justify-center items-center">
+  <div className="Search m-4 p-4">
+    <input type="search"  
+    placeholder="Search the restaruant"
+    className="border border-solid border-black text-sm font-medium text-gray-900 dark:text-white" value={searchText}
     onChange={(e)=>{
       setSearchText(e.target.value);
     }}
     />
-    <button onClick={()=>{
+    <button className="px-4 py-2 bg-green-100 m-4  rounded-lg"onClick={()=>{
       //Filter the restaruant card and Update the UI
 const fliterRestaruant = listofRestaruants.filter((restaurant)=>
   restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -76,15 +78,17 @@ const fliterRestaruant = listofRestaruants.filter((restaurant)=>
  setListFilterRestaruant(fliterRestaruant);
     }}>Search</button>
   </div>
-   <button className="filter-btn" onClick={()=>{
+  <div className="px-4 py-2 m-4 flex items-center">
+   <button  className="px-4 py-2 bg-gray-100  rounded-2xl" onClick={()=>{
 // console.log('hello world');
 //Filter logic
 const filteredList = listofRestaruants.filter((restaurant)=>restaurant.info.avgRating>4);
 
 setListofRestaruants(filteredList);
    }}>Top Rated Restaurant</button>
+   </div>
 </div>
-<div className="res-container">
+<div className="flex flex-wrap">
 {
     filterListRestaruant.map(
        (restaurant) =>

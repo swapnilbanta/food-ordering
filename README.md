@@ -311,3 +311,25 @@ How to readuce the bundle size  of the react js
 //on demand laoding
 //dynamic import
 
+Different Ui --
+Ant desgin
+chakra UI
+Material UI
+SASS
+SCSS
+style compoenets used by uber
+Tailwind CSS
+
+Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.
+
+Installing the tailwindcss
+npm install -D tailwindcss postcss
+PostCSS is a powerful tool for transforming CSS with JavaScript plugins
+
+Invoking the tailwindcss
+npx tailwindcss init
+created new file as tailwind.config.js file
+
+Tailwind CSS is very lightweight
+
+
