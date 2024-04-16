@@ -311,7 +311,7 @@ How to readuce the bundle size  of the react js
 //on demand laoding
 //dynamic import
 
-Different Ui --
+Different UI --
 Ant desgin
 chakra UI
 Material UI
@@ -331,5 +331,15 @@ npx tailwindcss init
 created new file as tailwind.config.js file
 
 Tailwind CSS is very lightweight
+
+Higher order compoenets
+Higher order compoenets is a function takes a compoenets and return the compoenets 
+Higer order compoents enchances the feature in compoenets and return back the
+compoenets 
+
+There are two layers in application
+UI layer
+Data layer 
+Data layer contains states, props and local  varaiables
 
 

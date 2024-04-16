@@ -1,109 +1,77 @@
-import React, { useEffect } from "react";
-import { useState} from "react";
-import RestaurantCard from "./RestaurantCard";
-import Shimmer from "./Shimmer";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-const Body = ()=>{
+import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
-  //  state varaiable -  Super powerfull varaiable
-const[listofRestaruants,setListofRestaruants] = useState(
- []
-);
-const[filterListRestaruant,setListFilterRestaruant] = useState([]);
-const[searchText,setSearchText ] = useState("");
+const Body = () => {
+  const [restaurants, setRestaurants] = useState([]);
+  const [filterRestaurants, setFilterRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
-useEffect(()=>{
-getRestaurants();
-},[]);
-async function getRestaurants() {
-  // handle the error using try... catch
-  try {
-    const response = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
-    const json = await response.json();
+  useEffect(() => {
+    getRestaurants();
+  }, []);
 
-    // initialize checkJsonData() function to check Swiggy Restaurant data
-    async function checkJsonData(jsonData) {
-      for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-
-        // initialize checkData for Swiggy Restaurant data
-        let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        // if checkData is not undefined then return it
-        if (checkData !== undefined) {
-          return checkData;
-        }
-      }
+  async function getRestaurants() {
+    try {
+      const response = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
+      const json = await response.json();
+      const resData = checkJsonData(json);
+      setRestaurants(resData);
+      setFilterRestaurants(resData);
+    } catch (error) {
+      console.log(error);
     }
-
-    // call the checkJsonData() function which return Swiggy Restaurant data
-    const resData = await checkJsonData(json);
-
-  
-
-    // update the state variable restaurants with Swiggy API data
-    setListofRestaruants(resData);
-    setListFilterRestaruant(resData);
-    // setFilteredRestaurants(resData);
-  } catch (error) {
-    console.log(error);
   }
-}
 
-const onlineStatus =useOnlineStatus();
-if(onlineStatus=== false){
-  return( <h1>Looks like your offline! Please check your interent</h1>);
+  function checkJsonData(jsonData) {
+    const restaurantData = jsonData?.data?.cards.find(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    return restaurantData?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+  }
 
-}
-//Normal js variable
-// let listofRestaruants = [];
-    return listofRestaruants.length === 0 ?  <Shimmer/> : (
-        <>
-<div  className="body">
-<div className="filter flex justify-center items-center">
-  <div className="Search m-4 p-4">
-    <input type="search"  
-    placeholder="Search the restaruant"
-    className="border border-solid border-black text-sm font-medium text-gray-900 dark:text-white" value={searchText}
-    onChange={(e)=>{
-      setSearchText(e.target.value);
-    }}
-    />
-    <button className="px-4 py-2 bg-green-100 m-4  rounded-lg"onClick={()=>{
-      //Filter the restaruant card and Update the UI
-const fliterRestaruant = listofRestaruants.filter((restaurant)=>
-  restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
+  function handleSearch() {
+    const filteredRestaurants = restaurants.filter(restaurant => restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()));
+    setFilterRestaurants(filteredRestaurants);
+  }
 
- );
+  function handleTopRated() {
+    const topRatedRestaurants = restaurants.filter(restaurant => restaurant.info.avgRating > 4);
+    setFilterRestaurants(topRatedRestaurants);
+  }
 
- setListFilterRestaruant(fliterRestaruant);
-    }}>Search</button>
-  </div>
-  <div className="px-4 py-2 m-4 flex items-center">
-   <button  className="px-4 py-2 bg-gray-100  rounded-2xl" onClick={()=>{
-// console.log('hello world');
-//Filter logic
-const filteredList = listofRestaruants.filter((restaurant)=>restaurant.info.avgRating>4);
+  if (!onlineStatus) {
+    return <h1>Looks like you're offline! Please check your internet connection.</h1>;
+  }
 
-setListofRestaruants(filteredList);
-   }}>Top Rated Restaurant</button>
-   </div>
-</div>
-<div className="flex flex-wrap">
-{
-    filterListRestaruant.map(
-       (restaurant) =>
-      //  console.log(restaurant)
-       
-     <Link   key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>  <RestaurantCard {...restaurant?.info}/></Link>
-    )
-}
+  return restaurants.length === 0 ? <Shimmer /> : (
+    <div className="body">
+      <div className="filter flex justify-center items-center">
+        <div className="Search m-4 p-4">
+        <input
+    type="search"
+    placeholder="Search the restaurant"
+    class="border border-solid border-blue-500 text-sm font-medium text-gray-900 dark:text-white px-3 py-2 rounded-lg focus:outline-none focus:border-blue-700"
+    value={searchText}
+    onChange={(e) => setSearchText(e.target.value)}
+/>
 
-
-</div>
- </div>
- </>
-    )
-}
-
+          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={handleSearch}>Search</button>
+        </div>
+        <div className="px-4 py-2 m-4 flex items-center">
+          <button className="px-4 py-2 bg-gray-100 rounded-2xl" onClick={handleTopRated}>Top Rated Restaurant</button>
+        </div>
+      </div>
+      <div className="flex flex-wrap">
+        {filterRestaurants.map((restaurant) => (
+          <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>
+            {restaurant.info.promoted ? <RestaurantCard {...restaurant?.info} /> : <RestaurantCard {...restaurant?.info} />}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Body;

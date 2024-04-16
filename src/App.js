@@ -23,6 +23,7 @@ const AppLayout = ()=>{
         <Route path="/grocery" element={<Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>} />
         <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
         <Route path="*" element={<Error />} />
+       
       </Routes>
 
 </div>
