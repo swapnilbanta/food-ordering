@@ -15,7 +15,7 @@ export const Header = () => {
                 <img alt="food_one" className="w-56" src={LOGO_URL} />
             </div>
             <div className="flex items-center">
-                <ul className="flex p-4 m-4 capitalize">
+                <ul className="flex p-4 m-4 capitalize text-lg font-semibold ">
                     <li className="px-4">Online Status : {onlineStatus ? "✅" : "🔴"}</li>
                     <li className="px-4"><Link to="/"><FiHome /> Home</Link></li>
                     <li className="px-4"><Link to="/about"><FiInfo /> About</Link></li>
