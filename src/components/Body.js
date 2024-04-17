@@ -13,7 +13,7 @@ const Body = () => {
   const location =  Gelocation();
   useEffect(() => {
     getRestaurants();
-  }, []);
+  }, [location]);
 
   async function getRestaurants() {
     try {
