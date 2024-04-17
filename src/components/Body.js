@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import Gelocation from "./Geolocation";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const getGeoLocation = Gelocation();
 
   useEffect(() => {
     getRestaurants();
@@ -16,8 +18,7 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      // const response = await fetch("https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.1108599&lng=76.5362526&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat="+getGeoLocation.latitude+"&lng="+getGeoLocation.longitude);
       const json = await response.json();
       const resData = checkJsonData(json);
       setRestaurants(resData);
