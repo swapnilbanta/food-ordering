@@ -18,7 +18,8 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat="+getGeoLocation.latitude+"&lng="+getGeoLocation.longitude);
+      // const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat="+getGeoLocation.latitude+"&lng="+getGeoLocation.longitude);
+      const response = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=32.1108599&lng=76.5362526");
       const json = await response.json();
       const resData = checkJsonData(json);
       setRestaurants(resData);
