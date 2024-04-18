@@ -11,6 +11,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
   const location =  Gelocation();
+  console.log(location);
   useEffect(() => {
     getRestaurants();
   }, [location]);
@@ -18,7 +19,7 @@ const Body = () => {
   async function getRestaurants() {
     try {
       const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
-      // const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.1108599&lng=76.5362526");
+      // const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await response.json();
       const resData = checkJsonData(json);
       setRestaurants(resData);
