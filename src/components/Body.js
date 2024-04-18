@@ -25,7 +25,7 @@ const Body = () => {
         setFilterRestaurants(resData);
      
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }
 
