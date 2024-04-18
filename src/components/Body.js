@@ -11,7 +11,7 @@ const Body = () => {
   const onlineStatus = useOnlineStatus();
   useEffect(() => {
     getRestaurants();
-  }, []);
+  },[]);
 
   async function getRestaurants() {
     try {
