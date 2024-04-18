@@ -51,7 +51,6 @@ const Body = () => {
   return restaurants.length === 0 ? <Shimmer /> : (
     <div className="body">
       <div className="px-4 py-2 mt-5 m-2 flex items-center justify-center items-center">
-        <h1>{location.latitude}</h1>
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[4].info.areaName}</h1>
       </div>
       <div className="filter flex justify-center items-center">
