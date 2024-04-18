@@ -11,19 +11,19 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
   const location =  Gelocation();
-  console.log(location);
   useEffect(() => {
     getRestaurants();
   }, [location]);
 
   async function getRestaurants() {
     try {
-      const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
-      // const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      // const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
+      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
       const json = await response.json();
       const resData = checkJsonData(json);
-      setRestaurants(resData);
-      setFilterRestaurants(resData);
+        setRestaurants(resData);
+        setFilterRestaurants(resData);
+     
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,8 @@ const Body = () => {
   return restaurants.length === 0 ? <Shimmer /> : (
     <div className="body">
       <div className="px-4 py-2 mt-5 m-2 flex items-center justify-center items-center">
-        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[0].info.areaName}</h1>
+        <h1>{location.latitude}</h1>
+        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[4].info.areaName}</h1>
       </div>
       <div className="filter flex justify-center items-center">
         <div className="Search m-4 p-4">

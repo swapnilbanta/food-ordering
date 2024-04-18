@@ -1,9 +1,6 @@
 import  { useEffect, useState } from 'react';
 const Gelocation  = ()=>{
-const [location, setLocation] =useState({
-  latitude:12.9715987,
-  longitude:77.5945627
-});
+const [location, setLocation] =useState(null);
 useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
