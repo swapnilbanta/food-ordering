@@ -14,7 +14,7 @@ const Body = () => {
   console.log(location);
   useEffect(() => {
     getRestaurants();
-  }, [location]);
+  }, []);
 
   async function getRestaurants() {
     try {
