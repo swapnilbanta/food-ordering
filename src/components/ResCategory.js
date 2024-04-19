@@ -5,7 +5,7 @@ const ResCategory = ({ data }) => {
     const [showItems, setShowItems] = useState(false);
 
     const handleClick = () => {
-        setShowItems(prevShowItems => !prevShowItems);
+        setShowItems(!showItems);
     };
 
     return (
