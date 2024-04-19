@@ -11,15 +11,18 @@ const RestaurantMenu = () => {
     const { resId } = useParams();
     const resInfo = useRestaurantMenu(resId);
     const categories = useRestaurantFilterData(resId);
+    console.log(categories);
     if (resInfo === null || categories === null) {
         return <Shimmer />;
     }
 
-    const { name, cuisines, costForTwoMessage } = resInfo;
+    const { name, cuisines, costForTwoMessage,avgRating,isOpen} = resInfo;
     
     return (
-        <div className="text-center">
+        <div className="text-center my-9">
             <h1 className="font-bold my- text-2xl">{name}</h1>
+            <h1 className="font-bold my- text-2xl">⭐{avgRating}</h1>
+            <h2 className="font-bold my- text-2xl">{isOpen?"Open":"Closed"}</h2>
             <p className="font-bold text-xl my-4">{cuisines.join(", ")} - {costForTwoMessage}</p>
         {categories.map((category,index)=>{
 return <ResCategory  

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { RESTAURANT_API } from "../utils/constants";
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
@@ -15,13 +15,11 @@ const Body = () => {
 
   async function getRestaurants() {
     try {
-      // const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.1108599&lng=76.5362526");
+      const response = await fetch(RESTAURANT_API);
       const json = await response.json();
       const resData = checkJsonData(json);
         setRestaurants(resData);
         setFilterRestaurants(resData);
-     
     } catch (error) {
       console.log(error);
     }
