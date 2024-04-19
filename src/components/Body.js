@@ -16,7 +16,7 @@ const Body = () => {
   async function getRestaurants() {
     try {
       // const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.1108599&lng=76.5362526");
+      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.219042&lng=76.3234037");
       const json = await response.json();
       const resData = checkJsonData(json);
         setRestaurants(resData);
