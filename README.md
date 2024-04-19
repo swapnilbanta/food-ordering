@@ -342,6 +342,11 @@ UI layer
 Data layer 
 Data layer contains states, props and local  varaiables
 
+Controlled and uncontrolled 
 
+Controlled compoenets when parents controls the children
+
+uncontrolled   when it has own state 
+if the rescategory controlled iteself is called uncontrolled 
 
 
