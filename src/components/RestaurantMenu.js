@@ -7,11 +7,10 @@ import { useState } from "react";
 
 const RestaurantMenu = () => {
     const [showIndex, setShowIndex] = useState(null);
+    const dummy = "hello world";
     const { resId } = useParams();
     const resInfo = useRestaurantMenu(resId);
     const categories = useRestaurantFilterData(resId);
-
-
     if (resInfo === null || categories === null) {
         return <Shimmer />;
     }
@@ -26,7 +25,11 @@ const RestaurantMenu = () => {
 return <ResCategory  
 key={category?.card?.card?.title} data={category?.card?.card} 
 showItems={index === showIndex ? true : false}
-setShowIndex={() => setShowIndex(index)}
+setShowIndex={() => setShowIndex(prevIndex =>
+    prevIndex === index ? null : index)}
+index = {index}
+dummy = {dummy}
+
 />
             })
         }

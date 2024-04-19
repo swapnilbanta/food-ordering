@@ -348,5 +348,21 @@ Controlled compoenets when parents controls the children
 
 uncontrolled   when it has own state 
 if the rescategory controlled iteself is called uncontrolled 
+Lifting state up
 
+Props drilling
+Data flow in top to bottom
+drill 
+
+react context   
+Global place data is kept.
+anbody can access it.
+For  example loggged user example
+theme black and white
+
+React give the important access important hook is called createContext
+When you are create the context react will give you the power of the consumer
+
+In the reactjs  the react context we can read and write
+medium sized  application we can context in react js 
 

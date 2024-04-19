@@ -16,7 +16,7 @@ const Body = () => {
   async function getRestaurants() {
     try {
       // const response = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=${location?.latitude}&lng=${location?.longitude}`);
-      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.219042&lng=76.3234037");
+      const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=32.1108599&lng=76.5362526");
       const json = await response.json();
       const resData = checkJsonData(json);
         setRestaurants(resData);
@@ -45,8 +45,11 @@ const Body = () => {
   if (!onlineStatus) {
     return <h1>Looks like you're offline! Please check your internet connection.</h1>;
   }
-  
-  return restaurants.length === 0 ? <Shimmer /> : (
+
+  if(restaurants.length===0){
+    return <Shimmer/>
+  }
+  return  (
     <div className="body">
       <div className="px-4 py-2 mt-5 m-2 flex items-center justify-center items-center">
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[4].info.areaName}</h1>
@@ -65,6 +68,8 @@ const Body = () => {
         <div className="px-4 py-2 m-2 flex items-center">
           <button className="px-4 py-2 bg-gray-100 rounded-2xl" onClick={handleTopRated}>Ratings 4.0+</button>
         </div>
+
+
       </div>
       <div className="flex flex-wrap">
         {filterRestaurants.map((restaurant) => (

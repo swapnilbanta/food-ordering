@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { CDN_URL } from "../utils/constants";
-
 const RestaurantCard = ({
   cloudinaryImageId,
   name,

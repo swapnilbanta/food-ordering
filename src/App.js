@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom/client";
 import { Header } from "./components/Header";
 
@@ -8,12 +8,22 @@ import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";   
 import { lazy ,Suspense} from "react";
+import UserContext from "./utils/UserContext";
 
-
+const Grocery = lazy(()=> import("./components/Grocery"));
+const About  = lazy(()=> import ("./components/About"));
 const AppLayout = ()=>{
-        const Grocery = lazy(()=> import("./components/Grocery"));
-   const About  = lazy(()=> import ("./components/About"));
+        const[userName, setUserName] =useState();
+//Authentication
+useEffect(()=>{
+const data = {
+        name:"swapnil banta",
+}
+setUserName(data.name);
+},[])
+
     return (
+        <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
         <div className="app">
 <Header />
       <Routes>
@@ -27,6 +37,8 @@ const AppLayout = ()=>{
       </Routes>
 
 </div>
+</UserContext.Provider>
+
         )
 
 };
