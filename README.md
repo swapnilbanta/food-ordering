@@ -366,3 +366,12 @@ When you are create the context react will give you the power of the consumer
 In the reactjs  the react context we can read and write
 medium sized  application we can context in react js 
 
+Redux offers easy debugging
+Redux debug tool
+redux is a predictable state container for js apps
+First is 
+react redux 
+redux toolkit
+when we click to the add to cart button then it will
+disptach an action then it will call the function reducer then update or modify  the slice of reducers
+

@@ -39,6 +39,14 @@ const Body = () => {
     const topRatedRestaurants = restaurants.filter(restaurant => restaurant.info.avgRating > 4);
     setFilterRestaurants(topRatedRestaurants);
   }
+  function handleVegRestaurant(){
+    const topVegRestaurant = restaurants.filter(restaurant => restaurant.info.veg === true);
+    setFilterRestaurants(topVegRestaurant);
+
+  }
+  function handleClearRestaurant(){
+    setFilterRestaurants(restaurants);
+  }
 
   if (!onlineStatus) {
     return <h1>Looks like you're offline! Please check your internet connection.</h1>;
@@ -61,10 +69,16 @@ const Body = () => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="px-4 py-2 bg-green-100 m-2 rounded-lg" onClick={handleSearch}>Search</button>
+          <button className="px-2 py-2 bg-green-100 m-2 rounded-lg" onClick={handleSearch}>Search</button>
         </div>
-        <div className="px-4 py-2 m-2 flex items-center">
+        <div className="px-2 py-2 m-2 flex items-center">
           <button className="px-4 py-2 bg-gray-100 rounded-2xl" onClick={handleTopRated}>Ratings 4.0+</button>
+        </div>
+        <div className="px-2 py-2 m-2 flex items-center">
+          <button className="px-4 py-2 bg-gray-100 rounded-2xl" onClick={handleVegRestaurant}>Pure Veg</button>
+        </div>
+        <div className="px-2 py-2 m-2 flex items-center">
+          <button className="px-4 py-2 bg-gray-100 rounded-2xl" onClick={handleClearRestaurant}>Clear</button>
         </div>
 
 
