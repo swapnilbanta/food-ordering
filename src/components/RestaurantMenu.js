@@ -11,7 +11,6 @@ const RestaurantMenu = () => {
     const { resId } = useParams();
     const resInfo = useRestaurantMenu(resId);
     const categories = useRestaurantFilterData(resId);
-    console.log(categories);
     if (resInfo === null || categories === null) {
         return <Shimmer />;
     }

@@ -8,6 +8,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";   
 import { lazy ,Suspense} from "react";
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux"
+import appStore from "./utils/appStore"
+import cart from "./components/Cart";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(()=> import("./components/Grocery"));
 const About  = lazy(()=> import ("./components/About"));
@@ -22,6 +26,7 @@ setUserName(data.name);
 },[])
 
     return (
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser:userName,setUserName}}>
         <div className="app">
 <Header />
@@ -31,12 +36,14 @@ setUserName(data.name);
         <Route path="/contact" element={<Contact />} />
         <Route path="/grocery" element={<Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>} />
         <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Error />} />
        
       </Routes>
 
 </div>
 </UserContext.Provider>
+</Provider>
 
         )
 

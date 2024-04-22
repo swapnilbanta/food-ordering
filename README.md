@@ -375,3 +375,75 @@ redux toolkit
 when we click to the add to cart button then it will
 disptach an action then it will call the function reducer then update or modify  the slice of reducers
 
+# Redux Toolkit
+-Install  @reduxjs/toolkit  and  recat -redux
+==Redux ToolKit
+-Build our  store
+-connect to our store to our app
+-slice(cart slice)
+-disptach an action
+-read the data using the selector
+
+Action small api to commuincate with redux
+reducers gets the two function
+
+<!-- createslice
+The actions have the
+{
+    actions:{
+        addItems,
+        removeItems,
+        clearCart
+    },
+    reducer
+} -->
+
+selector is a hook inside the react js
+ disptach(addItem("pizza"));
+
+ it will make the object
+ {
+    payload:"pizza"
+ }
+ It takes the object action.payload
+
+ Difference bewteen the 
+ onClick = {handleItems}
+ onclick = {()=>{
+    handleItems(item)
+ }}
+ onClick = {handleItem(items)}
+
+
+When you are subcribing to store make sure subscribing right portion 
+of the store
+small poriton of the store are subscribing into it.
+reducers is a combination of differnt reducers
+// Valilla Don't mutate the state 
+//older redux
+// returning was mandatory
+
+//const newState = [...state];
+newState.item.push(action.payload);
+return newState
+
+
+//redux is a immer liabaray
+
+//latest redux toolkit
+//mutate the state
+// it will the cuurent state then takes the new state  then
+calucate the diff bewteen them new state then redux use it
+For debugging used the cuurent state in react js
+console.log(current(state))
+RTX rule says that
+
+RTX - either mutate the exisiting state -or return a new state
+
+Redux toolkit
+RTK query
+
+
+
+
+

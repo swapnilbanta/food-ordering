@@ -4,10 +4,14 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { FiHome, FiInfo, FiPhone, FiShoppingCart, FiLogIn, FiLogOut } from "react-icons/fi"; // Import icons from react-icons
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
     const [btnName, upDateBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
+    ///subscibe to the store using selector
+    const cartItems = useSelector((store)=> store.cart.items);
+    console.log(cartItems);
     return (
         <div className="flex justify-between bg-pink-100 shadow-lg mb-2 sm:bg-red-200 lg:bg-green-50">
             <div className="logo-header">
@@ -19,7 +23,8 @@ export const Header = () => {
                     <li className="px-4"><Link to="/"><FiHome /> Home</Link></li>
                     <li className="px-4"><Link to="/about"><FiInfo /> About</Link></li>
                     <li className="px-4"><Link to="/contact"><FiPhone /> Contact us</Link></li>
-                    <li className="px-4"><Link to="/grocery"><FiShoppingCart /> Grocery</Link></li>
+                    {/* <li className="px-4"><Link to="/grocery"><FiShoppingCart /> Grocery</Link></li> */}
+                    <li className="px-4"><Link to="/cart"><FiShoppingCart /> Cart - ( {cartItems.length} ) items</Link></li>
                     <button className="login" onClick={() => {
                         btnName === "Login" ? upDateBtnName("Logout") : upDateBtnName("Login")
                     }}>{btnName === "Login" ? <FiLogIn /> : <FiLogOut />} {btnName}</button>
