@@ -11,7 +11,6 @@ export const Header = () => {
     const onlineStatus = useOnlineStatus();
     ///subscibe to the store using selector
     const cartItems = useSelector((store)=> store.cart.items);
-    console.log(cartItems);
     return (
         <div className="flex justify-between bg-pink-100 shadow-lg mb-2 sm:bg-red-200 lg:bg-green-50">
             <div className="logo-header">

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
-import { addItem } from "../utils/cartSlice";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const ItemList = ({ items, dummy}) => {
   const disptach = useDispatch();
@@ -29,6 +29,7 @@ const ItemList = ({ items, dummy}) => {
             </div>
             <img src={CDN_URL + item.card.info.imageId} alt={item.card.info.name} />
           </div>
+          
         </div>
       ))}
     </div>

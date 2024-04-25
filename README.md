@@ -443,6 +443,53 @@ RTX - either mutate the exisiting state -or return a new state
 Redux toolkit
 RTK query
 
+Developer can do two types
+different types of the testing (developer)
+- Unit Testing
+-Integration Testing
+-End to testing -e2e
+
+Unit testing you test your application react component 
+in  isolation
+one unit of the application are test
+only test one compoenet at time
+
+Integration  testing means mutilple components
+somebody clicks on there
+Big large scale application talks to each other
+
+end to end testing
+as user enter to the website and leaves the website
+seleium
+sparas
+Testing is the part of the development
+
+React libaray uses the jest for same
+jest is a javascript testing framework with a
+foucs on simplicity
+jest is a delightful javascript testing framework
+with a foucs on simplicity
+
+ setting in application 
+ react libaray
+ install jest
+ babel depedenices
+ configure babel
+ babel transplier
+ parcel alredy used the babel behind seens
+ configure parcel config to use To disable Babel transpilation in Parcel
+ jest configuration
+ npx jest --init
+
+js dom  is a libaray which parses and with assembled html 
+like a broswer
+-install json dom
+
+
+
+
+
+
 
 
 

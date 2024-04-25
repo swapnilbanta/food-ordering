@@ -4,6 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_API } from "../utils/constants";
+import CardSlider from "./CardSlider";
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
@@ -57,6 +58,10 @@ const Body = () => {
   }
   return  (
     <div className="body">
+      <div className="px-4 py-2 mt-5 m-2 flex items-center justify-center items-center">
+        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Top restaurant chains in {restaurants[4].info.areaName}</h1>
+      </div>
+      <CardSlider/>
       <div className="px-4 py-2 mt-5 m-2 flex items-center justify-center items-center">
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[4].info.areaName}</h1>
       </div>
