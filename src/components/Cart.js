@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
 import { clearCart, removeItem } from "../utils/cartSlice";
+import OrderSummary from "./OrderSummary";
 
 const Cart = ()=>{
 
@@ -16,9 +17,20 @@ return <div className="text-center m-4 p-4">
     <button className="p-2 m-2 bg-black text-white rounded-lg"
     onClick={handleClearCart}
     >Clear Cart</button>
-    {cartItems.length===0 && <h1>Cart is empty, Add items to the cart</h1>}
+    {cartItems.length===0 && 
+    <div>   <h1>Cart is empty, Add items to the cart</h1>
+    <img 
+    src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
+    className="h-45 w-40 mx-auto"
+    />
+
+     </div>
+ 
+    }
     <ItemList items={cartItems }/>
+    {/* <OrderSummary/> */}
    </div>
+  
     </div>
 }
 export default Cart;

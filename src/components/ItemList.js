@@ -2,10 +2,9 @@ import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
 import { addItem, removeItem } from "../utils/cartSlice";
 
-const ItemList = ({ items, dummy}) => {
+const ItemList = ({ items}) => {
   const disptach = useDispatch();
   const handleAddItem =(item)=>{
-    // dispatch an action
 
     disptach(addItem(item));
 

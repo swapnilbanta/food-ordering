@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { RESTAURANT_API } from "../utils/constants";
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
 import Shimmer from "./Shimmer";
 import { FiChevronLeft } from 'react-icons/fi';
 import { BiChevronRight } from 'react-icons/bi';
-import { Link } from "react-router-dom";
-import RestaurantCard from "./RestaurantCard";
-
-const CardSlider = () => {
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { RESTAURANT_API } from '../utils/constants';
+import CircleCard from './CircleCard';
+const CricleCardSlider = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -34,8 +33,8 @@ const CardSlider = () => {
     }
 
     function checkJsonData(jsonData) {
-        const restaurantData = jsonData?.data?.cards.find(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        return restaurantData?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+        const restaurantData = jsonData?.data?.cards.find(card => card?.card?.card);
+        return restaurantData?.card?.card?.imageGridCards?.info || [];
     }
 
     if (loading) {
@@ -48,7 +47,7 @@ const CardSlider = () => {
     
     const responsive = {
         superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 4 },
-        desktop: { breakpoint: { max: 3000, min: 1024 }, items: 5 },
+        desktop: { breakpoint: { max: 3000, min: 1024 }, items: 6 },
         tablet: { breakpoint: { max: 1024, min: 464 }, items: 4 },
         mobile: { breakpoint: { max: 464, min: 0 }, items: 1 }
     };
@@ -66,10 +65,8 @@ const CardSlider = () => {
         );
     };
     
-    
-    
     return (
-        <div className="mt-20"> {/* Add margin bottom to create space between Carousel and ButtonGroup */}
+        <div className="mt-20 px-0"> {/* Add margin bottom to create space between Carousel and ButtonGroup */}
             <Carousel
                 className="relative"
                 responsive={responsive}
@@ -78,15 +75,15 @@ const CardSlider = () => {
                 customButtonGroup={<ButtonGroup />}
                 customButtonGroupResponsive={true} // Ensure button group is responsive
                 removeArrowOnDeviceType={["tablet", "mobile"]} // Remove arrows on smaller screens
+                itemClass="carousel-item" // Add a class name for each carousel item
             >
                 {restaurants.map((restaurant, index) => (
-                    <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>
-                        {restaurant.info.promoted ? <RestaurantCard {...restaurant?.info} /> : <RestaurantCard {...restaurant?.info} />}
-                    </Link>
+                    <div key={index} className="carousel-item"> {/* Apply styles to this wrapper */}
+                        <CircleCard {...restaurant} />
+                    </div>
                 ))}
             </Carousel>
         </div>
     );
 };
-
-export default CardSlider;
+export default CricleCardSlider;
