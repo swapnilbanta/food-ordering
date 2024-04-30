@@ -7,10 +7,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { RESTAURANT_API } from '../utils/constants';
 import CircleCard from './CircleCard';
+import { useSelector } from "react-redux";
+import { selectAddress } from "../utils/addressSlice";
 const CricleCardSlider = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const {address} = useSelector(selectAddress);
 
     useEffect(() => {
         cardSlider();
@@ -18,7 +21,7 @@ const CricleCardSlider = () => {
 
     async function cardSlider() {
         try {
-            const response = await fetch(RESTAURANT_API);
+            const response = await fetch(`${RESTAURANT_API}?lat=${address.latitude}&lng=${address.longitude}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }

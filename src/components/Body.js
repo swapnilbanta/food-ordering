@@ -6,19 +6,24 @@ import Shimmer from "./Shimmer";
 import { RESTAURANT_API } from "../utils/constants";
 import CardSlider from "./CardSlider";
 import CricleCardSlider from "./CricleCardSlider";
+import { useSelector } from "react-redux";
+import { selectAddress } from "../utils/addressSlice";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const {address} = useSelector(selectAddress);
+
   useEffect(() => {
     getRestaurants();
   },[]);
+  console.log(address);
 
   async function getRestaurants() {
     try {
-      const response = await fetch(RESTAURANT_API);
+      const response = await fetch(`${RESTAURANT_API}?lat=${address.latitude}&lng=${address.longitude}`);
       const json = await response.json();
       const resData = checkJsonData(json);
         setRestaurants(resData);
@@ -78,11 +83,11 @@ const Body = () => {
       </div>
       <CricleCardSlider/>
       <div className="px-4 py-2 mt-20 m-2  mb-20 flex items-center justify-center items-center">
-        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Top restaurant chains in {restaurants[2].info.areaName}</h1>
+        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Top restaurant chains in {restaurants[2]?.info?.areaName}</h1>
       </div>
       <CardSlider/>
       <div className="px-4 py-2 mt-16 m-2 flex items-center justify-center items-center">
-        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[2].info.areaName}</h1>
+        <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {restaurants[2]?.info?.areaName}</h1>
       </div>
       <div className="filter flex justify-center items-center">
         <div className="Search m-4 p-4">

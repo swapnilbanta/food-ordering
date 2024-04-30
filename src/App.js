@@ -31,7 +31,8 @@ const AppLayout = () => {
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
-          <Header />
+        
+        <Header/>
           <Routes>
             <Route path="/" element={<Body />} />
             <Route path="/about" element={<Suspense fallback={<h1>Loading...</h1>}><About /></Suspense>} />

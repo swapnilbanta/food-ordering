@@ -7,11 +7,14 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { BiChevronRight } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
+import { useSelector } from "react-redux";
+import { selectAddress } from "../utils/addressSlice";
 
 const CardSlider = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const {address} = useSelector(selectAddress);
 
     useEffect(() => {
         cardSlider();
@@ -19,7 +22,7 @@ const CardSlider = () => {
 
     async function cardSlider() {
         try {
-            const response = await fetch(RESTAURANT_API);
+            const response = await fetch(`${RESTAURANT_API}?lat=${address.latitude}&lng=${address.longitude}`);
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }
