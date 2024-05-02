@@ -57,23 +57,24 @@ const Body = () => {
   }
   return  (
     <div className="body">
-       <div className="px-4 py-2 mt-5 m-2  mb-20 flex items-center justify-center items-center">
+       <div className="mt-6 flex  justify-center items-center">
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">What's on your mind?</h1>
       </div>
       <CricleCardSlider/>
-      <div className="px-4 py-2 mt-20 m-2  mb-20 flex items-center justify-center items-center">
+      <br/>
+      <div className="mt-20   flex justify-center items-center">
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">Top restaurant chains in {address.city}</h1>
       </div>
       <CardSlider/>
-      <div className="px-4 py-2 mt-16 m-2 flex items-center justify-center items-center">
+      <div className="px-4 py-2 mt-16 m-2 flex  justify-center items-center">
         <h1 className="font-sans md:font-serif font-extrabold text-3xl">Restaurants with online food delivery in {address.city}</h1>
       </div>
       <div className="filter flex justify-center items-center">
         <div className="Search m-4 p-4">
           <input
             type="search"
-            placeholder="Search the restaurant"
-            className="w-96 border border-solid border-blue-500 text-sm font-medium text-gray-900 dark:text-white px-3 py-2 rounded-lg focus:outline-none focus:border-blue-700"
+            placeholder='Search for Chicken Biriyani'
+            className='p-2 px-4 rounded-md border outline-none focus-within:border-orange-400 border-gray-200 grow w-96'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -99,7 +100,7 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap">
         {filterRestaurants.map((restaurant) => (
-          <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>
+          <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant?.info?.id}>
             {restaurant.info.aggregatedDiscountInfoV3 ? <RestaurantCard {...restaurant?.info} /> : <RestaurantCard {...restaurant?.info} />}
           </Link>
         ))}

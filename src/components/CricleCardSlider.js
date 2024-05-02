@@ -88,7 +88,7 @@ const CricleCardSlider = () => {
     
     
     return (
-        <div className="mt-20 px-0"> {/* Add margin bottom to create space between Carousel and ButtonGroup */}
+        <div className=""> {/* Add margin bottom to create space between Carousel and ButtonGroup */}
            <Carousel
     className="relative"
     responsive={responsive}
