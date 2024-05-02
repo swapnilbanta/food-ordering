@@ -13,6 +13,7 @@ const CricleCardSlider = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
     const {address} = useSelector(selectAddress);
 
     useEffect(() => {
@@ -55,37 +56,57 @@ const CricleCardSlider = () => {
         mobile: { breakpoint: { max: 464, min: 0 }, items: 1 }
     };
 
-    const ButtonGroup = ({ next, previous }) => {
+    const ButtonGroup = ({ next, previous, totalItems, currentSlide }) => {
         return (
             <div className="absolute top-2/1 right-0 flex justify-center items-center mx-auto mt-4">
-                <button className="block p-3 bg-slate-300 p-3 rounded-full border-2 p-2 text-3xl mr-4" onClick={() => next()}> {/* Added margin-right */}
+                <button 
+                    className={`block p-3 bg-slate-300 p-3 rounded-full border-2 p-2 text-3xl mr-4 ${currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                    onClick={() => {
+                        if (currentSlide !== 0) {
+                            previous();
+                        }
+                    }}
+                    disabled={currentSlide === 0}
+                >
                     <BiChevronRight />
                 </button>
-                <button className="block p-3 bg-slate-300 p-3 rounded-full border-2 p-2 text-3xl" onClick={() => previous()}>
+                <button 
+                    className={`block p-3 bg-slate-300 p-3 rounded-full border-2 p-2 text-3xl ${currentSlide === totalItems - 1 ? 'opacity-50 cursor-not-allowed' : ''}`} 
+                    onClick={() => {
+                        if (currentSlide !== totalItems - 1) {
+                            next();
+                        }
+                    }}
+                    disabled={currentSlide === totalItems - 1}
+                >
                     <FiChevronLeft />
                 </button>
             </div>
         );
     };
     
+    
+    
     return (
         <div className="mt-20 px-0"> {/* Add margin bottom to create space between Carousel and ButtonGroup */}
-            <Carousel
-                className="relative"
-                responsive={responsive}
-                arrows={false}
-                renderButtonGroupOutside={true}
-                customButtonGroup={<ButtonGroup />}
-                customButtonGroupResponsive={true} // Ensure button group is responsive
-                removeArrowOnDeviceType={["tablet", "mobile"]} // Remove arrows on smaller screens
-                itemClass="carousel-item" // Add a class name for each carousel item
-            >
-                {restaurants.map((restaurant, index) => (
-                    <div key={index} className="carousel-item"> {/* Apply styles to this wrapper */}
-                        <CircleCard {...restaurant} />
-                    </div>
-                ))}
-            </Carousel>
+           <Carousel
+    className="relative"
+    responsive={responsive}
+    arrows={false}
+    renderButtonGroupOutside={true}
+    customButtonGroup={<ButtonGroup totalItems={restaurants.length} currentSlide={currentSlide} />}
+    customButtonGroupResponsive={true} // Ensure button group is responsive
+    removeArrowOnDeviceType={["tablet", "mobile"]} // Remove arrows on smaller screens
+    itemClass="carousel-item" // Add a class name for each carousel item
+    beforeChange={(previousSlide, nextSlide) => setCurrentSlide(nextSlide)} // Add beforeChange event handler to update currentSlide
+>
+    {restaurants.map((restaurant, index) => (
+        <div key={index} className="carousel-item"> {/* Apply styles to this wrapper */}
+            <CircleCard {...restaurant} />
+        </div>
+    ))}
+</Carousel>
+
         </div>
     );
 };
