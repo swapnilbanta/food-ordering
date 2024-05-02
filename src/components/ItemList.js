@@ -9,6 +9,9 @@ const ItemList = ({ items}) => {
     disptach(addItem(item));
 
   }
+  const handleRemoveItem= (item)=>{
+    disptach(removeItem(item))
+  }
   return (
     <div>
       {items.map((item) => (
@@ -20,12 +23,16 @@ const ItemList = ({ items}) => {
             </div>
             <p className="text-xs">{item.card.info.description}</p>
           </div>
-          <div className="w-3/12 p-4">
-            <div className="absolute">  
-              <button className="mx-5 p-2 rounded-lg bg-black text-white shadow-lg"
+          <div className="w-3/12  flex justify-between items-center mt-2">
+            <div className="absolute flex items-center">  
+              <button className="mx-2 p-2 rounded-lg bg-orange-500 text-white shadow-lg"
               onClick={()=>handleAddItem(item)}
               >Add +</button>
+               <button className="mx-2 p-2 rounded-lg bg-orange-500 text-white shadow-lg"
+              onClick={()=>handleRemoveItem(item)}
+              >Remove - </button>
             </div>
+           
             <img src={CDN_URL + item.card.info.imageId} alt={item.card.info.name} />
           </div>
           

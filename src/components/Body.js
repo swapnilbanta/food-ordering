@@ -19,7 +19,6 @@ const Body = () => {
   useEffect(() => {
     getRestaurants();
   },[]);
-  console.log(address);
 
   async function getRestaurants() {
     try {
@@ -121,7 +120,7 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filterRestaurants.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={"/restaurants/" + restaurant.info.id}>
-            {restaurant.info.promoted ? <RestaurantCard {...restaurant?.info} /> : <RestaurantCard {...restaurant?.info} />}
+            {restaurant.info.aggregatedDiscountInfoV3 ? <RestaurantCard {...restaurant?.info} /> : <RestaurantCard {...restaurant?.info} />}
           </Link>
         ))}
       </div>

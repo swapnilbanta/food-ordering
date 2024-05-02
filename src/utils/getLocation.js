@@ -15,6 +15,7 @@
       );
 
       const city = await res.json();
+      console.log(city);
 
       //   console.log(city.name);
 

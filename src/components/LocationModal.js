@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setAddress } from '../utils/addressSlice';
-import { closeLocationModal } from '../utils/appSlice';
 import getLocation from '../utils/getLocation';
 import { ArrowPathIcon, MapPinIcon } from '@heroicons/react/24/solid';
 const LocationModal = ({ onClose }) => {
