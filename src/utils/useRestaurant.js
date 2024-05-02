@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { RESTAURANT_API } from "./constants";
 import { useEffect, useState } from "react";
 import { selectAddress } from "./addressSlice";
-import CricleCardSlider from "../components/CricleCardSlider";
 function useRestaurant() {
     const {address} = useSelector(selectAddress);
     const [restaurants, setRestaurants] = useState([]);
