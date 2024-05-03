@@ -14,7 +14,6 @@ function useRestaurant() {
           const json = await response.json();
           const resData = checkJsonData(json);
           setRestaurants(resData);
-
         } catch (error) {
           console.log(error);
         }
