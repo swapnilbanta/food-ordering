@@ -24,7 +24,7 @@ function useRestaurant() {
         return restaurantData.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       }
 
-      return [...restaurants];
+      return restaurants;
     
 
 }
