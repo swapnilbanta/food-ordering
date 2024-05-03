@@ -20,11 +20,11 @@ function useRestaurant() {
         }
       }
       function checkJsonData(jsonData) {
-        const restaurantData1 = jsonData?.data?.cards.find(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        return restaurantData1?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+        const restaurantData = jsonData?.data?.cards.find(card => card?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        return restaurantData.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
       }
 
-      return restaurants;
+      return [...restaurants];
     
 
 }

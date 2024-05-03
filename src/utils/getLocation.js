@@ -14,15 +14,13 @@
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_CITY_API_KEY}`
       );
 
-      const city = await res.json();
-      console.log(city);
-
-      //   console.log(city.name);
+      const data = await res.json();
+        console.log(data);
 
       //   console.log('Latitude: ' + latitude);
       //   console.log('Longitude: ' + longitude);
 
-      return { longitude, latitude, city: city.name };
+      return { longitude, latitude, city: data.name };
     } else {
       throw new Error('Geolocation is not supported in your browser');
     }
